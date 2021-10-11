@@ -53,7 +53,7 @@ export class Movimiento{
     getMiembro(idMiembro:String){
         for(var i = 0; i < this.gMiembros.length; i++){
             var miembro = this.gMiembros[i]
-            if(idMiembro == miembro.getid){
+            if(idMiembro == miembro.getid()){
                 return miembro
             }
         }
@@ -61,7 +61,7 @@ export class Movimiento{
     }
 
     //Busca y devuelve un grupo según su id
-    getGrupo(idGrupo:String){
+    getGrupo(idGrupo:String | null){
         for(var i = 0; i < this.gNodos.length; i++){
             var grupo = this.gNodos[i]
             if(idGrupo == grupo.id){
@@ -71,4 +71,7 @@ export class Movimiento{
         return null
     }
 
+    getNombre(){
+        return this.nombre
+    }
 }

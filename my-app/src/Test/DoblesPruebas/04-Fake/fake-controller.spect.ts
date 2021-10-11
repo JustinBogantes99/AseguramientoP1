@@ -16,7 +16,7 @@ export class Controller {
     }
 
     //agregarGrupo simula al agregarGrupo de Controller.js, reemplaza la busqueda del movimiento por una version sencilla para los test, agrega un Grupo a un movimiento
-    agregarGrupo(idMovimiento:String, idZona:String, idRama:String, idGrupo:String, nombre:String, isMonitor:boolean, idEncargado1:String, idEncargado2:String | null){
+    agregarGrupo(idMovimiento:String, idZona:String, idRama:String, idGrupo:String | null, nombre:String, isMonitor:boolean, idEncargado1:String, idEncargado2:String | null){
         var encontrado = false;
         var movimiento;
         for(var i = 0; i < this.movements.length && !encontrado; i++){
@@ -29,7 +29,7 @@ export class Controller {
     }
 
     //agregarGrupo simula al agregarGrupo de Controller.js, reemplaza la busqueda del movimiento por una version sencilla para los test, agrega un grupo a un movimiento
-    agregarMiembroGrupo(idMovimiento:String, idZona:String, idRama:String, idGrupo:String, idMiembro:String){
+    agregarMiembroGrupo(idMovimiento:String, idZona:String, idRama:String, idGrupo:String | null, idMiembro:String){
         var encontrado = false;
         var movimiento;
         var grupo;
@@ -43,6 +43,10 @@ export class Controller {
                 encontrado = true
             }
         }
+    }
+
+    agregarMiembro(index:number, miembro:Miembro){
+        this.movements[index].addMiembro(miembro)
     }
 
     //obtiene un movimiento en un index específico
