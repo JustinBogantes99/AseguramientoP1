@@ -50,8 +50,21 @@ export class Controller {
     }
 
     //obtiene un movimiento en un index específico
+    // NO ES EL getMovimiento DEL CONTROLADOR.JS
     getMovement(index:number){
         return this.movements[index]
     }
+
+    // getMovimiento de controlador.js
+    getMovimiento(idMovimiento:String){
+        // revisar si hay movimiento con id especificado en movements y lo retorna
+        var m = null;
+        this.movements.forEach(movimiento => {
+            if (movimiento.cedula_juridica == idMovimiento) m = movimiento;
+        });
+        return m;
+
+    }
+
 
 }
