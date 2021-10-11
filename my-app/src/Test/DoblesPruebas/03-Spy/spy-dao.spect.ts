@@ -11,7 +11,7 @@ export class DAO {
     }
 
     //Función que se dedica a simular insertarGrupo de Controlador.js, si se realiza el insert, levanta wasSaved, si hay un nulo, levanta wasError
-    insertarGrupo(idMovimiento:String, idZona:String, idRama:String, idGrupo:String | null, bMonitores:boolean, pNombre:String, idMonitor1:String, idMonitor2: string | null){
+    insertarGrupo(idMovimiento:String | null, idZona:String | null, idRama:String | null, idGrupo:String | null, bMonitores:boolean | null, pNombre:String | null, idMonitor1:String | null, idMonitor2: string | null){
         if(!idMonitor2){
             idMonitor2 = "";
         }
