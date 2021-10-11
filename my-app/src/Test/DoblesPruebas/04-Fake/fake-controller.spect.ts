@@ -16,7 +16,7 @@ export class Controller {
     }
 
     //agregarGrupo simula al agregarGrupo de Controller.js, reemplaza la busqueda del movimiento por una version sencilla para los test, agrega un Grupo a un movimiento
-    agregarGrupo(idMovimiento:String, idZona:String, idRama:String, idGrupo:String | null, nombre:String, isMonitor:boolean, idEncargado1:String, idEncargado2:String | null){
+    agregarGrupo(idMovimiento:String | any, idZona:String, idRama:String, idGrupo:String | null, nombre:String, isMonitor:boolean, idEncargado1:String, idEncargado2:String | null){
         var encontrado = false;
         var movimiento;
         for(var i = 0; i < this.movements.length && !encontrado; i++){
