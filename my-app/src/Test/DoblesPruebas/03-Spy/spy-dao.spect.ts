@@ -10,13 +10,28 @@ export class DAO {
         this.wasError = false;
     }
 
-    //Función que se dedica a simular insertarGrupo de Controlador.js, si se realiza el insert, levanta wasSaved, si hay un nulo, levanta wasError
+    //Función que se dedica a simular insertarGrupo de DAO.js, si se realiza el insert, levanta wasSaved, si hay un nulo, levanta wasError
     insertarGrupo(idMovimiento:String | null, idZona:String | null, idRama:String | null, idGrupo:String | null, bMonitores:boolean | null, pNombre:String | null, idMonitor1:String | null, idMonitor2: string | null){
         if(!idMonitor2){
             idMonitor2 = "";
         }
         //Simulando inserción a la BD
         var variables = [idMovimiento, idZona, idRama, idGrupo, bMonitores, pNombre, idMonitor1, idMonitor2]
+        for(var i = 0; i < variables.length; i++){
+            if(variables[i] === null){
+                this.wasError = true;
+            }
+        }
+        if(!this.wasError){
+            this.wasSaved = true;
+        }
+    }
+
+    //Función que se dedica a simular insertarJefeRama de DAO.js, si se realiza el insert, levanta wasSaved, si hay un nulo, levanta wasError
+    insertarJefeRama(cedulaMiembro: String |null, idZona: String |null, idRama: String |null, idMovimiento: String |null){
+
+        //Simulando inserción a la BD
+        var variables = [cedulaMiembro, idZona, idRama, idMovimiento]
         for(var i = 0; i < variables.length; i++){
             if(variables[i] === null){
                 this.wasError = true;
