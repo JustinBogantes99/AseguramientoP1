@@ -9,7 +9,7 @@ export class Controller {
     constructor(){
         this.movements = new Array<Movimiento>();
         var movimiento = new Movimiento('402420840', '1023456789', 'Un hogar para los perritos ancianos', 'www.perritos-ancianos.com', 'www.perritos-ancianos.com/logo',
-        'Costa Rica', 'San José', 'San José', 'Hosputal', '')
+        'Costa Rica', 'San José', 'San José', 'Hospital', '')
         movimiento.addMiembro(new Miembro('12345678','Javier Barquero Gen', '84952633', 'ejemplo@gmail.com', 'San José', 'San José', 'Hospital', '', false,[]))
         this.movements.push(movimiento)
         
