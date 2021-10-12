@@ -53,7 +53,6 @@ describe('Crear Grupo - agregarGrupo en Controlador.js', () => {
     var isMonitor = true;
 
     controller.agregarGrupo(idMovimiento, idZona, idRama, idGrupo, nombre, isMonitor, idEncargado1, idEncargado2);
-
     expect(controller.getMovement(0).gNodos.length).toEqual(0);
   });
 

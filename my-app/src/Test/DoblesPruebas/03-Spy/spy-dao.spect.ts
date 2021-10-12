@@ -41,7 +41,17 @@ export class DAO {
             this.wasSaved = true;
         }
     }
-
+    agregarMiembroGrupo(idMovimiento:String | null, idZona:String | null, idRama:String | null, idGrupo:String | null, idMiembro:String ){
+        var variables = [idMovimiento, idZona, idRama, idGrupo, idMiembro]
+        for(var i = 0; i < variables.length; i++){
+            if(variables[i] === null){
+                this.wasError = true;
+            }
+        }
+        if(!this.wasError){
+            this.wasSaved = true;
+        }
+    }
     //Devuelve wasSaved
     salvado(){
         return this.wasSaved;
