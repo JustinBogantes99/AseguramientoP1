@@ -68,6 +68,23 @@ export class DAO {
             this.wasSaved = true;
         }
     }
+
+    // simula noticiasMiembro en DAO.js
+    async noticiasMiembro(pIdMovimiento:String | null, pIdMiembro:String | null){
+
+        //digamos que hay un movimiento con este id y este miembro
+        var idMovimiento = '402420840';
+        var idMiembro = '12345678';
+
+        if(idMovimiento==pIdMovimiento && idMiembro==pIdMiembro){
+            this.wasSaved = true;
+        }
+        else this.wasError = true;
+
+
+    }
+
+
     //Devuelve wasSaved
     salvado(){
         return this.wasSaved;
