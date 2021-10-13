@@ -65,5 +65,15 @@ export class Controller {
         return m;
 
     }
+    getGrupo(idMovimiento:String, idZona:String, idRama:String, idGrupo:String | null){
+        var m = null;
+        this.movements.forEach(movimiento => {
+            if (movimiento.getGrupo(idGrupo) == idGrupo) m = movimiento;
+        });
+        return m;
+    }
+    modificarRama(idMovimiento:String | null, idZona:String | null, idRama:String | null , nombre:String | null, idJefeNuevo1:String | null, idJefeNuevo2:String | null, idJefeViejo1:String | null, idJefeViejo2:String | null){
+        var m = null;
+    }
    
 }
