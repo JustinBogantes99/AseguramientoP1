@@ -41,6 +41,22 @@ export class DAO {
             this.wasSaved = true;
         }
     }
+
+    //Función que se dedica a simular asignarJefeZona de DAO.js, si se realiza el insert, levanta wasSaved, si hay un nulo, levanta wasError
+    asignarJefeZona(cedulaMiembro: String |null, idZona: String |null, idMovimiento: String |null){
+
+        //Simulando inserción a la BD
+        var variables = [cedulaMiembro, idZona, idMovimiento]
+        for(var i = 0; i < variables.length; i++){
+            if(variables[i] === null){
+                this.wasError = true;
+            }
+        }
+        if(!this.wasError){
+            this.wasSaved = true;
+        }
+    }
+
     agregarMiembroGrupo(idMovimiento:String | null, idZona:String | null, idRama:String | null, idGrupo:String | null, idMiembro:String ){
         var variables = [idMovimiento, idZona, idRama, idGrupo, idMiembro]
         for(var i = 0; i < variables.length; i++){
