@@ -39,14 +39,16 @@ export class Controller {
         for(var i = 0; i < this.movements.length && !encontrado; i++){
             if(this.movements[i].getCedula_juridica() == idMovimiento){
                 movimiento = this.movements[i];
-                miembro = movimiento.getMiembro(idMiembro);                
-                movimiento.gMiembros.push(miembro)
+
+                grupo = this.movements[i].getGrupo(idGrupo);
+                miembro = movimiento.getMiembro(idMiembro);
+                if(grupo)grupo.miembros.push(miembro)
+
                 lista.push(true)
                 encontrado = true
             }
         }
         return lista
-        
     }
 
     agregarMiembro(index:number, miembro:Miembro){

@@ -1,6 +1,3 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-//import { AppComponent } from '../app/app.component';
 import { DAO } from './DoblesPruebas/03-Spy/spy-dao.spect';
 import { Controller } from './DoblesPruebas/04-Fake/fake-controller.spect';
 import { Miembro } from './DoblesPruebas/02-Stub/Stub-miembro.spect'
@@ -44,7 +41,7 @@ describe('Crear Grupo - CrearGrupoNuevo en Controlador.js', () => {
     if(idEncargado2){
         controller.agregarMiembroGrupo(idMovimiento, idZona, idRama, idGrupo, idEncargado2);
     }
-
+    
     expect(dao.salvado()).toEqual(true);
     expect(controller.getMovement(0).gNodos.length).toEqual(1);
     expect(controller.getMovement(0).gNodos[0].miembros.length).toEqual(1);
