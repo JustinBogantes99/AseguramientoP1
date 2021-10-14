@@ -2,6 +2,8 @@ import { Movimiento } from './fake-movimiento.spect'
 import { Miembro } from '../02-Stub/Stub-miembro.spect'
 import {stubController} from '../02-Stub/Stub-controller.spect' 
 import { DAO } from '../03-Spy/spy-dao.spect'
+import { stubZona } from '../02-Stub/Stub-zona.spect'
+
 export class Controller {
     //Lista de movimientos para reemplazar una BD
     movements:Array<Movimiento>
@@ -103,6 +105,29 @@ export class Controller {
         }
         if(idJefeNuevo2 && idJefeNuevo2 != idJefeViejo1 && idJefeNuevo2 != idJefeViejo2){
             dao.asignarJefeRama(idJefeNuevo2,idZona,idRama)
+        }
+    }
+
+    modificarZona(dao:DAO, idMovimiento:String | null, idZona:String | null , nombre:String | null, idJefeNuevo1:String | null, idJefeNuevo2:String | null, idJefeViejo1:String | null, idJefeViejo2:String | null){
+        if(idJefeNuevo1 != idJefeViejo1 && idJefeViejo1 && idJefeNuevo2 != idJefeViejo1){
+            dao.eliminarJefeZona(idJefeViejo1,idZona, idMovimiento)
+        }
+
+        if(idJefeNuevo2 != idJefeViejo2 && idJefeViejo2 && idJefeNuevo1 != idJefeViejo2){
+            dao.eliminarJefeZona(idJefeViejo2,idZona, idMovimiento)
+        }
+
+        if(idJefeNuevo1 && idJefeNuevo1 != idJefeViejo1 && idJefeNuevo1 != idJefeViejo2){
+            dao.asignarJefeZona(idJefeNuevo1, idZona, idMovimiento)
+        }
+        
+        if(idJefeNuevo2 && idJefeNuevo2 != idJefeViejo1 && idJefeNuevo2 != idJefeViejo2){
+            dao.asignarJefeZona(idJefeNuevo2, idZona, idMovimiento)
+        }
+
+        var zona = new stubZona();
+        if(zona.nombre != nombre){
+            dao.modificarZona(idMovimiento,idZona,nombre)
         }
     }
 }

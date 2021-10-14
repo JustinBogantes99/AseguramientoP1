@@ -54,6 +54,7 @@ export class DAO {
         }
         if(!this.wasError){
             this.wasSaved = true;
+            this.listaBolean.push(true)
         }
     }
 
@@ -92,9 +93,11 @@ export class DAO {
             }
         }
         if(!this.wasError){
+            this.wasSaved = true
             this.listaBolean.push(true)
         }
     }
+
     asignarJefeRama(cedulaMiembro: String |null, idZona: String |null, idMovimiento: String |null){
         //Simulando inserción a la BD
         var variables = [cedulaMiembro, idZona, idMovimiento]
@@ -104,9 +107,37 @@ export class DAO {
             }
         }
         if(!this.wasError){
+            this.wasSaved = true
             this.listaBolean.push(true)
         }
     }
+
+    eliminarJefeZona(idJefeViejo1:String | null, idZona:String | null, idMovimiento:String | null){
+        var variables = [idMovimiento, idZona, idMovimiento,idJefeViejo1]
+        for(var i = 0; i < variables.length; i++){
+            if(variables[i] === null){
+                this.wasError = true;
+            }
+        }
+        if(!this.wasError){
+            this.wasSaved = true
+            this.listaBolean.push(true)
+        }
+    }
+
+    modificarZona(idMovimiento:String | null, idZona:String | null, nombre:String | null){
+        var variables = [idMovimiento, idZona, nombre]
+        for(var i = 0; i < variables.length; i++){
+            if(variables[i] === null){
+                this.wasError = true;
+            }
+        }
+        if(!this.wasError){
+            this.wasSaved = true
+            this.listaBolean.push(true)
+        }
+    }
+
     async noticiaLeida(pIdNoticia:String | null, pIdMiembro:String | null){
 
         //digamos que hay una noticia con este id y este miembro
@@ -130,5 +161,10 @@ export class DAO {
     //Devuelve wasError
     error(){
         return this.wasError;
+    }
+
+    //Devuelve listaBooleans
+    getSalvados(){
+        return this.listaBolean
     }
 }

@@ -1,7 +1,7 @@
 import { DAO } from './DoblesPruebas/03-Spy/spy-dao.spect';
 import { Controller } from './DoblesPruebas/04-Fake/fake-controller.spect';
 
-describe('Asignar jefes de zonas y ramas - modificarRama  en Controlador.js', () => {
+describe('Asignar jefes de zonas y ramas - modificarZona  en Controlador.js', () => {
     /*Ejemplo de beforeEach, por si lo necesitan para alguna cosa e.e
 
     beforeEach(async () => {
@@ -15,34 +15,111 @@ describe('Asignar jefes de zonas y ramas - modificarRama  en Controlador.js', ()
     }).compileComponents();
     });*/
 
-    it(`Proceso de CrearGrupoNuevo con los datos correctos`, () => {
-    //Simulando al objeto DAO y Controller
-    const dao = new DAO();
-    const controller = new Controller();
+    it(`Proceso de modificarZona con los datos correctos`, () => {
+        //Simulando al objeto DAO y Controller
+        const dao = new DAO();
+        const controller = new Controller();
 
-    //Simulando variables que vienen por parametros
-    var idMovimiento = '402420840';
-    var idZona = '1';
-    var idRama = '1';
-    var idGrupo = '1';
-    var nombre = 'Rescate de Perros Callejeros'
-    var idEncargado1 = '12345678';
-    var idEncargado2 = null;
-    var isMonitor = true;
+        //Simulando variables que vienen por parametros
+        var idMovimiento = '402420840';
+        var idZona = '1';
+        var nombreZona = 'Cartago'
+        var idJefeNuevo1 = '12345678';
+        var idJefeNuevo2 = '24365745';
+        var idJefeViejo1 = '12143265';
+        var idJefeViejo2 = '42365145';
 
-    //Procesos de CrearGrupoNuevo
-    if(!nombre){
-        nombre = idZona+idRama+idGrupo;
-    }
-    dao.insertarGrupo(idMovimiento, idZona, idRama, idGrupo, isMonitor, nombre, idEncargado1, idEncargado2);
-    controller.agregarGrupo(idMovimiento, idZona, idRama, idGrupo, nombre, isMonitor, idEncargado1, idEncargado2);
-    controller.agregarMiembroGrupo(idMovimiento, idZona, idRama, idGrupo, idEncargado1);
-    if(idEncargado2){
-        controller.agregarMiembroGrupo(idMovimiento, idZona, idRama, idGrupo, idEncargado2);
-    }
 
-    expect(dao.salvado()).toEqual(true);
-    expect(controller.getMovement(0).gNodos.length).toEqual(1);
-    expect(controller.getMovement(0).gNodos[0].miembros.length).toEqual(1);
+        //Procesos de modificarZona
+        controller.modificarZona(dao, idMovimiento, idZona, nombreZona, idJefeNuevo1, idJefeNuevo2, idJefeViejo1, idJefeViejo2);
+
+        expect(dao.getSalvados().length).toEqual(5);
+    });
+
+    it(`Proceso de modificarZona con idJefeViejo1 igual a idJefeNuevo1`, () => {
+        //Simulando al objeto DAO y Controller
+        const dao = new DAO();
+        const controller = new Controller();
+
+        //Simulando variables que vienen por parametros
+        var idMovimiento = '402420840';
+        var idZona = '1';
+        var nombreZona = 'Cartago'
+        var idJefeNuevo1 = '12345678';
+        var idJefeNuevo2 = '24365745';
+        var idJefeViejo1 = '12345678';
+        var idJefeViejo2 = '42365145';
+
+
+        //Procesos de modificarZona
+        controller.modificarZona(dao, idMovimiento, idZona, nombreZona, idJefeNuevo1, idJefeNuevo2, idJefeViejo1, idJefeViejo2);
+
+        expect(dao.getSalvados().length).toEqual(3);
+    });
+
+    it(`Proceso de modificarZona con el idJefeViejo1 no existe`, () => {
+        //Simulando al objeto DAO y Controller
+        const dao = new DAO();
+        const controller = new Controller();
+
+        //Simulando variables que vienen por parametros
+        var idMovimiento = '402420840';
+        var idZona = '1';
+        var nombreZona = 'Cartago'
+        var idJefeNuevo1 = '00000000'; //IdJefeViejo ya no existe
+        var idJefeNuevo2 = '24365745';
+        var idJefeViejo1 = '12345678';
+        var idJefeViejo2 = '42365145';
+
+
+        //Procesos de modificarZona
+        controller.modificarZona(dao, idMovimiento, idZona, nombreZona, idJefeNuevo1, idJefeNuevo2, idJefeViejo1, idJefeViejo2);
+
+
+        expect(dao.getSalvados().length).toEqual(5);
+    });
+
+    it(`Proceso de modificarZona con el nombre de la zona es el igual`, () => {
+        //Simulando al objeto DAO y Controller
+        const dao = new DAO();
+        const controller = new Controller();
+
+        //Simulando variables que vienen por parametros
+        var idMovimiento = '402420840';
+        var idZona = '1';
+        var nombreZona = 'San José'     //Nombre de la zona es igual al Stub-Zona
+        var idJefeNuevo1 = '12345678'; 
+        var idJefeNuevo2 = '24365745';
+        var idJefeViejo1 = '12143265';
+        var idJefeViejo2 = '42365145';
+
+
+        //Procesos de modificarZona
+        controller.modificarZona(dao, idMovimiento, idZona, nombreZona, idJefeNuevo1, idJefeNuevo2, idJefeViejo1, idJefeViejo2);
+
+
+        expect(dao.getSalvados().length).toEqual(4);
+    });
+
+    it(`Proceso de modificarZona con el nombre de la zona es el igual`, () => {
+        //Simulando al objeto DAO y Controller
+        const dao = new DAO();
+        const controller = new Controller();
+
+        //Simulando variables que vienen por parametros
+        var idMovimiento = '402420840';
+        var idZona = '1';
+        var nombreZona = 'San José'     //Nombre de la zona es igual al Stub-Zona
+        var idJefeNuevo1 = '12345678'; 
+        var idJefeNuevo2 = '24365745';
+        var idJefeViejo1 = '12143265';
+        var idJefeViejo2 = '42365145';
+
+
+        //Procesos de modificarZona
+        controller.modificarZona(dao, idMovimiento, idZona, nombreZona, idJefeNuevo1, idJefeNuevo2, idJefeViejo1, idJefeViejo2);
+
+
+        expect(dao.getSalvados().length).toEqual(4);
     });
 });
