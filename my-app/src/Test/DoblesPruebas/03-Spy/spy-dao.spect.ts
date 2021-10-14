@@ -152,6 +152,19 @@ export class DAO {
 
     }
 
+    modificarRama(pIdMovimiento: String | null, pIdZona:String | null, pIdRama:String | null, pNombre:String | null){
+        var variables = [pIdMovimiento,pIdZona,pIdRama,pNombre]
+        for(var i = 0; i < variables.length; i++){
+            if(variables[i] === null){
+                this.wasError = true;
+            }
+        }
+        if(!this.wasError){
+            this.wasSaved = true
+            this.listaBolean.push(true)
+        }
+    }
+
 
     //Devuelve wasSaved
     salvado(){
