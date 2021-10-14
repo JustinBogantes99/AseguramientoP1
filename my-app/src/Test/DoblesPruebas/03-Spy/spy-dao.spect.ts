@@ -107,6 +107,21 @@ export class DAO {
             this.listaBolean.push(true)
         }
     }
+    async noticiaLeida(pIdNoticia:String | null, pIdMiembro:String | null){
+
+        //digamos que hay una noticia con este id y este miembro
+        var idNoticia = '1';
+        var idMiembro = '12345678';
+
+        if(pIdNoticia==idNoticia && idMiembro==pIdMiembro){
+            this.wasSaved = true;
+        }
+        else this.wasError = true;
+
+
+    }
+
+
     //Devuelve wasSaved
     salvado(){
         return this.wasSaved;
