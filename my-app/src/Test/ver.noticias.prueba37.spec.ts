@@ -11,7 +11,7 @@ describe('Ver noticias de un usuario - noticiasMiembro en DAO.js', () => {
     var idMovimiento = '402420840';
     var idMiembro = '12345678';
 
-    //Procesos de insertarGrupo
+    //Procesos de noticiasMiembro
     dao.noticiasMiembro(idMovimiento, idMiembro);
 
     expect(dao.salvado()).toEqual(true);
@@ -26,7 +26,7 @@ describe('Ver noticias de un usuario - noticiasMiembro en DAO.js', () => {
     var idMovimiento = '402420840';
     var idMiembro = '12345678';
 
-    //Procesos de insertarGrupo
+    //Procesos de noticiasMiembro
     dao.noticiasMiembro(idMovimiento, idMiembro);
 
     expect(dao.salvado()).toEqual(true);
@@ -41,7 +41,7 @@ describe('Ver noticias de un usuario - noticiasMiembro en DAO.js', () => {
     var idMovimiento = '402420840';
     var idMiembro = '87654312'; // miembro no existe
 
-    //Procesos de insertarGrupo
+    //Procesos de noticiasMiembro
     dao.noticiasMiembro(idMovimiento, idMiembro);
 
     expect(dao.salvado()).toEqual(false);
@@ -56,7 +56,7 @@ describe('Ver noticias de un usuario - noticiasMiembro en DAO.js', () => {
     var idMovimiento = '402420840';
     var idMiembro = '12345678';
 
-    //Procesos de insertarGrupo
+    //Procesos de noticiasMiembro
     dao.noticiasMiembro(idMovimiento, idMiembro);
 
     expect(dao.salvado()).toEqual(true);
