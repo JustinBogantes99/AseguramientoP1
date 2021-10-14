@@ -43,6 +43,9 @@ export class Movimiento{
     addGrupo(grupo:Object){
         this.gNodos.push(grupo)
     }
+    addZona(zona:Object){
+        this.gNodos.push(zona)
+    }
 
     //Devuelve la cédula jurídica
     getCedula_juridica(){
@@ -70,7 +73,16 @@ export class Movimiento{
         }
         return null
     }
-
+    //Busca y devuelve una zona según su id
+    getZona(idZona:String | null){
+        for(var i = 0; i < this.gNodos.length; i++){
+            var zona = this.gNodos[i]
+            if(idZona == zona.id){
+                return zona
+            }
+        }
+        return null 
+    }
     getNombre(){
         return this.nombre
     }

@@ -1,6 +1,7 @@
 import { Movimiento } from './fake-movimiento.spect'
 import { Miembro } from '../02-Stub/Stub-miembro.spect'
-
+import {stubController} from '../02-Stub/Stub-controller.spect' 
+import { DAO } from '../03-Spy/spy-dao.spect'
 export class Controller {
     //Lista de movimientos para reemplazar una BD
     movements:Array<Movimiento>
@@ -34,15 +35,18 @@ export class Controller {
         var movimiento;
         var grupo;
         var miembro;
+        var lista=[]
         for(var i = 0; i < this.movements.length && !encontrado; i++){
             if(this.movements[i].getCedula_juridica() == idMovimiento){
                 movimiento = this.movements[i];
-                grupo = this.movements[i].getGrupo(idGrupo);
-                miembro = movimiento.getMiembro(idMiembro);
-                if(grupo)grupo.miembros.push(miembro)
+                miembro = movimiento.getMiembro(idMiembro);                
+                movimiento.gMiembros.push(miembro)
+                lista.push(true)
                 encontrado = true
             }
         }
+        return lista
+        
     }
 
     agregarMiembro(index:number, miembro:Miembro){
@@ -72,8 +76,31 @@ export class Controller {
         });
         return m;
     }
-    modificarRama(idMovimiento:String | null, idZona:String | null, idRama:String | null , nombre:String | null, idJefeNuevo1:String | null, idJefeNuevo2:String | null, idJefeViejo1:String | null, idJefeViejo2:String | null){
-        var m = null;
+    verificarEliminarJefe(zona:stubController| null, idJefeViejo:String | null){
+        if(zona?.getencargado1() == idJefeViejo || zona?.getencargado1() == idJefeViejo){
+            return true;
+        }
+        return false
     }
-   
+    modificarRama(dao:DAO,idMovimiento:String | null, idZona:String | null, idRama:String | null , nombre:String | null, idJefeNuevo1:String | null, idJefeNuevo2:String | null, idJefeViejo1:String | null, idJefeViejo2:String | null){
+        var m = null;
+        var zona = new stubController('1','1','2');
+        if(idJefeNuevo1 != idJefeViejo1 && idJefeViejo1 && idJefeNuevo2 != idJefeViejo1){
+            if (this.verificarEliminarJefe(zona, idJefeViejo1)==true){
+                dao.listaBolean.push(true)
+            }
+            dao.eliminarJefeRama(idJefeViejo1,idZona,idRama, idMovimiento)
+        }
+        if(idJefeNuevo2 != idJefeViejo2 && idJefeViejo2 && idJefeNuevo1 != idJefeViejo2){
+            if (this.verificarEliminarJefe(zona, idJefeViejo1)==true){
+                dao.listaBolean.push(true)
+            }dao.eliminarJefeRama(idJefeViejo2,idZona, idRama, idMovimiento)
+        }
+        if(idJefeNuevo1 && idJefeNuevo1 != idJefeViejo1 && idJefeNuevo1 != idJefeViejo2){
+            dao.asignarJefeRama(idJefeNuevo1, idZona, idRama)
+        }
+        if(idJefeNuevo2 && idJefeNuevo2 != idJefeViejo1 && idJefeNuevo2 != idJefeViejo2){
+            dao.asignarJefeRama(idJefeNuevo2,idZona,idRama)
+        }
+    }
 }

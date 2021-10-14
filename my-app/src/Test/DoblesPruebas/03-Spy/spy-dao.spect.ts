@@ -3,11 +3,12 @@ export class DAO {
     //Atributos bandera para saber si guardó en base de datos o si tuvo un error
     wasSaved: boolean;
     wasError: boolean;
-
+    listaBolean: Array<boolean>;
     //Constructor pone como false todas las banderas
     constructor(){
         this.wasSaved = false;
         this.wasError = false;
+        this.listaBolean=[]
     }
 
     //Función que se dedica a simular insertarGrupo de DAO.js, si se realiza el insert, levanta wasSaved, si hay un nulo, levanta wasError
@@ -44,7 +45,6 @@ export class DAO {
 
     //Función que se dedica a simular asignarJefeZona de DAO.js, si se realiza el insert, levanta wasSaved, si hay un nulo, levanta wasError
     asignarJefeZona(cedulaMiembro: String |null, idZona: String |null, idMovimiento: String |null){
-
         //Simulando inserción a la BD
         var variables = [cedulaMiembro, idZona, idMovimiento]
         for(var i = 0; i < variables.length; i++){
@@ -84,7 +84,29 @@ export class DAO {
 
     }
 
-
+    eliminarJefeRama(idJefeViejo1:String | null,idZona:String | null,idRama:String | null, idMovimiento:String | null){
+        var variables = [idMovimiento, idZona, idRama, idMovimiento,idJefeViejo1]
+        for(var i = 0; i < variables.length; i++){
+            if(variables[i] === null){
+                this.wasError = true;
+            }
+        }
+        if(!this.wasError){
+            this.listaBolean.push(true)
+        }
+    }
+    asignarJefeRama(cedulaMiembro: String |null, idZona: String |null, idMovimiento: String |null){
+        //Simulando inserción a la BD
+        var variables = [cedulaMiembro, idZona, idMovimiento]
+        for(var i = 0; i < variables.length; i++){
+            if(variables[i] === null){
+                this.wasError = true;
+            }
+        }
+        if(!this.wasError){
+            this.listaBolean.push(true)
+        }
+    }
     //Devuelve wasSaved
     salvado(){
         return this.wasSaved;
