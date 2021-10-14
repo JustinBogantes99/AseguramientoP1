@@ -12,7 +12,7 @@ export class Controller {
     constructor(){
         this.movements = new Array<Movimiento>();
         var movimiento = new Movimiento('402420840', '1023456789', 'Un hogar para los perritos ancianos', 'www.perritos-ancianos.com', 'www.perritos-ancianos.com/logo',
-        'Costa Rica', 'San José', 'San José', 'Hospital', '')
+        'Costa Rica', 'San José', 'San José', 'Hospital', '','')
         movimiento.addMiembro(new Miembro('12345678','Javier Barquero Gen', '84952633', 'ejemplo@gmail.com', 'San José', 'San José', 'Hospital', '', false,[]))
         this.movements.push(movimiento)
         
@@ -76,7 +76,7 @@ export class Controller {
     getGrupo(idMovimiento:String, idZona:String, idRama:String, idGrupo:String | null){
         var m = null;
         this.movements.forEach(movimiento => {
-            if (movimiento.getGrupo(idGrupo) == idGrupo) m = movimiento;
+            if (movimiento.getGrupo(idGrupo).id == idGrupo) m = movimiento;
         });
         return m;
     }

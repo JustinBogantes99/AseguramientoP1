@@ -14,18 +14,40 @@ describe('Crear Grupo - getGrupo en Controlador.js', () => {
         var idZona = '1';
         var idRama = '1';
         var idGrupo = '1';
-        controller.getGrupo(idMovimiento, idZona, idRama, idGrupo);
-        expect(controller.getMovement(0).gNodos.length).toEqual(0);
+        var nombre = 'Rescate de Gatos Callejeros'
+        var idEncargado1 = '12345678';
+        var idEncargado2 = null;
+        var isMonitor = true;
+        var getGrupo=1
+        dao.insertarGrupo(idMovimiento, idZona, idRama, idGrupo, isMonitor, nombre, idEncargado1, idEncargado2);
+        controller.agregarGrupo(idMovimiento, idZona, idRama, idGrupo, nombre, isMonitor, idEncargado1, idEncargado2);
+        var result = controller.getGrupo(idMovimiento, idZona, idRama, idGrupo)
+        console.log('Resultado:',result)
+        if (result==null){
+            getGrupo=0
+        }
+        expect(getGrupo).toEqual(1);
     })
     it(`Proceso de getGrupo con movimiento ingresado no existe`, () => {
         const dao = new DAO();
         const controller = new Controller();
-        var idMovimiento = '402420841';
+        var idMovimiento = '4024208401';
         var idZona = '1';
         var idRama = '1';
         var idGrupo = '1';
-        controller.getGrupo(idMovimiento, idZona, idRama, idGrupo);
-        expect(controller.getMovement(0).gNodos.length).toEqual(0);
+        var nombre = 'Rescate de Gatos Callejeros'
+        var idEncargado1 = '12345678';
+        var idEncargado2 = null;
+        var isMonitor = true;
+        var getGrupo=1
+        dao.insertarGrupo(idMovimiento, idZona, idRama, idGrupo, isMonitor, nombre, idEncargado1, idEncargado2);
+        controller.agregarGrupo(idMovimiento, idZona, idRama, idGrupo, nombre, isMonitor, idEncargado1, idEncargado2);
+        var result = controller.getGrupo(idMovimiento, idZona, idRama, idGrupo)
+        console.log('Resultado:',result)
+        if (result==null){
+            getGrupo=0
+        }
+        expect(getGrupo).toEqual(1);
     })
     it(`Proceso de getGrupo con el grupo ingresado no existente`, () => {
         const dao = new DAO();
@@ -33,8 +55,19 @@ describe('Crear Grupo - getGrupo en Controlador.js', () => {
         var idMovimiento = '402420840';
         var idZona = '1';
         var idRama = '1';
-        var idGrupo = '15';
-        controller.getGrupo(idMovimiento, idZona, idRama, idGrupo);
-        expect(controller.getMovement(0).gNodos.length).toEqual(0);
+        var idGrupo = '1';
+        var nombre = 'Rescate de Gatos Callejeros'
+        var idEncargado1 = '12345678';
+        var idEncargado2 = null;
+        var isMonitor = true;
+        var getGrupo=1
+        dao.insertarGrupo(idMovimiento, idZona, idRama, idGrupo, isMonitor, nombre, idEncargado1, idEncargado2);
+        controller.agregarGrupo(idMovimiento, idZona, idRama, idGrupo, nombre, isMonitor, idEncargado1, idEncargado2);
+        var result = controller.getGrupo(idMovimiento, idZona, idRama, '11')
+        console.log('Resultado:',result)
+        if (result==null){
+            getGrupo=0
+        }
+        expect(getGrupo).toEqual(1);
     })
 })

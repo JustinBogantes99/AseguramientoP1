@@ -16,9 +16,10 @@ export class Movimiento{
     gMiembros:Array<any>
     gNodos:Array<any>
     telefonos:Array<any>
+    idGrupo:String
 
     //Contructor recibe una serie de parámetros y los coloca en atributos. No se sabe qué es "senas"
-    constructor(cedula:String, idAsesor:String, nombre:String, direccionWeb:String, logo:String, pais:String, provincia:String, canton:String, distrito:String, senas:any){
+    constructor(cedula:String, idAsesor:String, nombre:String, direccionWeb:String, logo:String, pais:String, provincia:String, canton:String, distrito:String, senas:any ,idGrupo:String){
         this.cedula_juridica = cedula;
         this.idAsesor = idAsesor;
         this.nombre = nombre;
@@ -32,6 +33,7 @@ export class Movimiento{
         this.gMiembros = [];
         this.gNodos = [];
         this.telefonos = [];
+        this.idGrupo = idGrupo
     }
 
     //Añade un miembro a la lista gMiembros
