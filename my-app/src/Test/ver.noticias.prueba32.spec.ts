@@ -25,6 +25,6 @@ describe('Ver noticias de un usuario - getNoticias en DAO.js', () => {
         expect(dao.getNoticias().length).toEqual(0);
     });
 
-    });
+});
   
   

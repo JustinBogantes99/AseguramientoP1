@@ -35,4 +35,8 @@ export class Miembro{
     getid(){
         return this.id
     }
+
+    getNoticias(){
+        return this.noticias
+    }
 }
