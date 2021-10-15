@@ -22,7 +22,6 @@ describe('Crear Grupo - getGrupo en Controlador.js', () => {
         dao.insertarGrupo(idMovimiento, idZona, idRama, idGrupo, isMonitor, nombre, idEncargado1, idEncargado2);
         controller.agregarGrupo(idMovimiento, idZona, idRama, idGrupo, nombre, isMonitor, idEncargado1, idEncargado2);
         var result = controller.getGrupo(idMovimiento, idZona, idRama, idGrupo)
-        console.log('Resultado:',result)
         if (result==null){
             getGrupo=0
         }
@@ -43,7 +42,6 @@ describe('Crear Grupo - getGrupo en Controlador.js', () => {
         dao.insertarGrupo(idMovimiento, idZona, idRama, idGrupo, isMonitor, nombre, idEncargado1, idEncargado2);
         controller.agregarGrupo(idMovimiento, idZona, idRama, idGrupo, nombre, isMonitor, idEncargado1, idEncargado2);
         var result = controller.getGrupo(idMovimiento, idZona, idRama, idGrupo)
-        console.log('Resultado:',result)
         if (result==null){
             getGrupo=0
         }
@@ -64,7 +62,6 @@ describe('Crear Grupo - getGrupo en Controlador.js', () => {
         dao.insertarGrupo(idMovimiento, idZona, idRama, idGrupo, isMonitor, nombre, idEncargado1, idEncargado2);
         controller.agregarGrupo(idMovimiento, idZona, idRama, idGrupo, nombre, isMonitor, idEncargado1, idEncargado2);
         var result = controller.getGrupo(idMovimiento, idZona, idRama, '11')
-        console.log('Resultado:',result)
         if (result==null){
             getGrupo=0
         }

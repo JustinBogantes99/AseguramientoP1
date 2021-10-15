@@ -528,7 +528,7 @@ export default class DAO{
             .then(res => {
                 console.table(res.rows);
                 return res.rows;
-            })
+            }) 
             .catch(err => {
                 throw err
             })
