@@ -79,29 +79,7 @@ describe('Asignar jefes de zonas y ramas - modificarZona  en Controlador.js', ()
         expect(dao.getSalvados().length).toEqual(5);
     });
 
-    it(`Proceso de modificarZona con el nombre de la zona es el igual`, () => {
-        //Simulando al objeto DAO y Controller
-        const dao = new DAO();
-        const controller = new Controller();
-
-        //Simulando variables que vienen por parametros
-        var idMovimiento = '402420840';
-        var idZona = '1';
-        var nombreZona = 'San José'     //Nombre de la zona es igual al Stub-Zona
-        var idJefeNuevo1 = '12345678'; 
-        var idJefeNuevo2 = '24365745';
-        var idJefeViejo1 = '12143265';
-        var idJefeViejo2 = '42365145';
-
-
-        //Procesos de modificarZona
-        controller.modificarZona(dao, idMovimiento, idZona, nombreZona, idJefeNuevo1, idJefeNuevo2, idJefeViejo1, idJefeViejo2);
-
-
-        expect(dao.getSalvados().length).toEqual(4);
-    });
-
-    it(`Proceso de modificarZona con el nombre de la zona es el igual`, () => {
+    it(`Proceso de modificarZona con el nombre de la zona es igual`, () => {
         //Simulando al objeto DAO y Controller
         const dao = new DAO();
         const controller = new Controller();
